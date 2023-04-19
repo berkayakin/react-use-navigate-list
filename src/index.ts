@@ -50,6 +50,11 @@ const useNavigateList = <T extends object, K extends keyof T>({
     [cursor, list, nextItemKey, prevItemKey]
   );
 
+  // Fixes cursor out of bounds
+  useEffect(() => {
+    setCursor(0);
+  }, [list]);
+
   useEffect(() => {
     window.addEventListener('keydown', downHandler);
 
